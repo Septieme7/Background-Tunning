@@ -1,0 +1,433 @@
+/* ===== SYSTEME BGSEVEN - STYLES PRINCIPAUX ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    transition: all 0.5s ease-in-out;
+    overflow-x: hidden;
+    min-height: 100vh;
+    position: relative;
+}
+
+/* ===== THEMES CLAIR/SOMBRE ===== */
+body.bgseven-light-mode {
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    color: #1e293b;
+}
+
+body.bgseven-dark-mode {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: #f1f5f9;
+}
+
+/* ===== CONTROLES PRINCIPAUX ===== */
+.bgseven-controls {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-end;
+}
+
+/* Bouton thème */
+.bgseven-theme-toggle {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    border: none;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.bgseven-theme-toggle::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.bgseven-theme-toggle:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+}
+
+.bgseven-theme-toggle:hover::before {
+    opacity: 1;
+}
+
+/* Menu des effets */
+.bgseven-effects-menu {
+    position: relative;
+}
+
+.bgseven-menu-toggle {
+    background: linear-gradient(135deg, #10b981, #059669);
+    border: none;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bgseven-menu-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+}
+
+.bgseven-effects-list {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 12px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    display: none;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 200px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transform-origin: top right;
+}
+
+body.bgseven-dark-mode .bgseven-effects-list {
+    background: rgba(15, 23, 42, 0.95);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.bgseven-effects-list.show {
+    display: flex;
+    animation: bgsevenSlideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes bgsevenSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.bgseven-effect-btn {
+    background: transparent;
+    border: none;
+    padding: 14px 18px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+    font-size: 0.95rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: inherit;
+}
+
+.bgseven-effect-btn:hover {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(139, 92, 246, 0.1));
+    transform: translateX(-8px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.bgseven-effect-btn.active {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.2));
+    font-weight: 600;
+    color: #6366f1;
+    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.2);
+}
+
+body.bgseven-dark-mode .bgseven-effect-btn.active {
+    color: #8b5cf6;
+}
+
+/* ===== BACKGROUND ANIME ===== */
+.bgseven-animated-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    background: transparent;
+}
+
+/* Éléments animés */
+.bgseven-element {
+    position: absolute;
+    transition: filter 0.5s ease;
+    pointer-events: none;
+    user-select: none;
+    border-radius: 8px;
+}
+
+.bgseven-bouncing-image {
+    position: absolute;
+    transition: filter 0.5s ease;
+    pointer-events: none;
+    user-select: none;
+    border-radius: 8px;
+    object-fit: contain;
+}
+
+/* Connexions pour trios et réseau */
+.bgseven-connection {
+    position: absolute;
+    pointer-events: none;
+    z-index: -1;
+    background: linear-gradient(90deg, #6366f1, #8b5cf6);
+    height: 3px;
+    transform-origin: 0 0;
+    border-radius: 2px;
+    opacity: 0.6;
+}
+
+body.bgseven-dark-mode .bgseven-connection {
+    background: linear-gradient(90deg, #c4b5fd, #a78bfa);
+}
+
+/* Inversion couleur mode sombre */
+body.bgseven-dark-mode .bgseven-bouncing-image,
+body.bgseven-dark-mode .bgseven-element {
+    filter: invert(1) hue-rotate(180deg) brightness(1.1) contrast(0.9);
+}
+
+/* ===== CONTENU PRINCIPAL ===== */
+.bgseven-main-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 140px 24px 60px;
+    position: relative;
+    z-index: 1;
+}
+
+.bgseven-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.bgseven-header h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6, #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.bgseven-subtitle {
+    font-size: 1.3rem;
+    opacity: 0.8;
+    font-weight: 400;
+}
+
+/* Carte d'information d'effet */
+.bgseven-effect-info {
+    margin-bottom: 60px;
+}
+
+.bgseven-effect-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    padding: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+body.bgseven-dark-mode .bgseven-effect-card {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.bgseven-effect-name {
+    color: #6366f1;
+    font-weight: 700;
+}
+
+body.bgseven-dark-mode .bgseven-effect-name {
+    color: #8b5cf6;
+}
+
+.bgseven-effect-desc {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    margin: 20px 0;
+    opacity: 0.9;
+}
+
+.bgseven-stats {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
+
+.bgseven-stat {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Section features */
+.bgseven-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 60px;
+}
+
+.bgseven-feature {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.bgseven-feature:hover {
+    transform: translateY(-5px);
+}
+
+.bgseven-feature h3 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: #6366f1;
+}
+
+body.bgseven-dark-mode .bgseven-feature h3 {
+    color: #8b5cf6;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .bgseven-controls {
+        right: 16px;
+        top: 16px;
+        gap: 10px;
+    }
+    
+    .bgseven-theme-toggle,
+    .bgseven-menu-toggle {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+    }
+    
+    .bgseven-main-content {
+        padding: 120px 20px 40px;
+    }
+    
+    .bgseven-header h1 {
+        font-size: 2.5rem;
+    }
+    
+    .bgseven-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .bgseven-effect-card {
+        padding: 30px 25px;
+        margin: 0 10px;
+    }
+    
+    .bgseven-stats {
+        gap: 15px;
+    }
+    
+    .bgseven-stat {
+        padding: 10px 16px;
+        font-size: 0.9rem;
+    }
+    
+    .bgseven-features {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .bgseven-effects-list {
+        min-width: 180px;
+        padding: 14px;
+    }
+    
+    .bgseven-effect-btn {
+        padding: 12px 16px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .bgseven-header h1 {
+        font-size: 2rem;
+    }
+    
+    .bgseven-effect-card {
+        padding: 25px 20px;
+    }
+    
+    .bgseven-stats {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .bgseven-feature {
+        padding: 25px 20px;
+    }
+}
+
+/* Animation de chargement */
+@keyframes bgsevenFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.bgseven-main-content > * {
+    animation: bgsevenFadeIn 0.6s ease-out;
+}

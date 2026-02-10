@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Système de Background Animé - 7 Effets</title>
+    <meta name="description" content="Système de background animé avec 7 effets différents et mode clair/sombre">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/bgseven.css">
+</head>
+<body class="bgseven-light-mode">
+    <!-- Contrôles en haut à droite -->
+    <div class="bgseven-controls">
+        <button class="bgseven-theme-toggle" id="bgsevenThemeToggle" aria-label="Changer le mode clair/sombre">
+            🌙
+        </button>
+        
+        <div class="bgseven-effects-menu">
+            <button class="bgseven-menu-toggle" id="bgsevenMenuToggle" aria-label="Ouvrir le menu des effets">🎨</button>
+            <div class="bgseven-effects-list" id="bgsevenEffectsList">
+                <button class="bgseven-effect-btn active" data-effect="bounce">🔄 Rebonds</button>
+                <button class="bgseven-effect-btn" data-effect="collide">💥 Collisions</button>
+                <button class="bgseven-effect-btn" data-effect="triospheres">🔗 Trios Sphères</button>
+                <button class="bgseven-effect-btn" data-effect="particles">✨ Particules</button>
+                <button class="bgseven-effect-btn" data-effect="waves">🌊 Ondes</button>
+                <button class="bgseven-effect-btn" data-effect="network">🕸️ Réseau</button>
+                <button class="bgseven-effect-btn" data-effect="geom">🔷 Géométrie</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Background animé -->
+    <div class="bgseven-animated-background" id="bgsevenAnimatedBackground"></div>
+    
+    <!-- Contenu principal -->
+    <!-- <div class="bgseven-main-content">
+        <header class="bgseven-header">
+            <h1>🎨 Backgrounds Animés </h1>
+            <p class="bgseven-subtitle">7 effets visuels uniques avec mode clair/sombre</p>
+        </header> -->
+        
+        <!-- <div class="bgseven-effect-info" id="bgsevenEffectInfo">
+            <div class="bgseven-effect-card">
+                <h2>Effet Actuel: <span id="currentEffectName" class="bgseven-effect-name">Rebonds</span></h2>
+                <p id="effectDescription" class="bgseven-effect-desc">
+                    Images qui rebondissent sur les bords de l'écran avec différentes tailles et vitesses.
+                </p>
+                <div class="bgseven-stats">
+                    <span class="bgseven-stat">🎯 Éléments: <strong id="elementCount">12</strong></span>
+                    <span class="bgseven-stat">📏 Taille: <strong id="sizeRange">40-90px</strong></span>
+                    <span class="bgseven-stat">⚡ Vitesse: <strong id="speedRange">1-3</strong></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="bgseven-features">
+            <div class="bgseven-feature">
+                <h3>🎮 Contrôles Simples</h3>
+                <p>Utilisez le menu en haut à droite pour changer d'effet et le bouton 🌙/☀️ pour le thème</p>
+            </div>
+            <div class="bgseven-feature">
+                <h3>📱 Responsive</h3>
+                <p>S'adapte parfaitement à tous les écrans, du mobile au desktop</p>
+            </div>
+            <div class="bgseven-feature">
+                <h3>⚡ Performant</h3>
+                <p>Animations fluides optimisées avec requestAnimationFrame</p>
+            </div>
+        </div>
+    </div> -->
+
+    <!-- JavaScript -->
+    <script src="/assets/js/bgseven.js"></script>
+</body>
+</html>

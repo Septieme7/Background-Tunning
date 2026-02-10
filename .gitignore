@@ -1,0 +1,17 @@
+# Ignorer le fichier spécifique
+Euh Comment Ss7.txt
+
+# Ignorer les fichiers temporaires
+*.log
+*.tmp
+
+# Ignorer les dossiers de dépendances
+node_modules/
+
+# Ignorer les fichiers générés par les builds
+dist/
+build/
+
+# Ignorer les fichiers système
+.DS_Store
+Thumbs.db
